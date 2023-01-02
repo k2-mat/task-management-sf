@@ -12,7 +12,7 @@
           <div class="slds-form-element slds-form-element_stacked">
             <label class="slds-form-element__label" for="search-title">件名</label>
             <div class="slds-form-element__control">
-              <input type="text" id="search-title" class="slds-input" />
+              <input type="text" id="search-title" class="slds-input" onblur={changeSearchTitle} value={searchTitle} />
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
           <div class="slds-form-element slds-form-element_stacked">
             <label class="slds-form-element__label" for="search-body">内容</label>
             <div class="slds-form-element__control">
-              <input type="text" id="search-body" class="slds-input" />
+              <input type="text" id="search-body" class="slds-input" onblur={changeSearchBody} value={searchBody} />
             </div>
           </div>
         </div>
