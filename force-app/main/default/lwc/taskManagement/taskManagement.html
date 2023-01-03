@@ -42,7 +42,17 @@
     </span>
   </div>
   <div class="slds-box slds-theme_default">
+    <div class="slds-clearfix slds-m-bottom_small">
+      <div class="slds-float_right">
+        <lightning-button variant="brand" label="登録" title="登録" onclick={openModalNew} class="slds-m-left_x-small"></lightning-button>
+      </div>
+    </div>
     <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover">
+      <colgroup>
+        <col span="1">
+        <col span="1">
+        <col span="1" style="width: 160px;">
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">件名</th>
@@ -59,10 +69,14 @@
             <td>
               {task.Body__c}
             </td>
-            <td></td>
+            <td>
+              <lightning-button variant="brand-outline" label="編集" title="編集" onclick={openModalNew} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
+              <lightning-button variant="destructive-text" label="削除" title="削除" onclick={handleDeleteTask} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
+            </td>
           </tr>
         </template>
       </tbody>
     </table>
   </div>
+  <c-modal-task-form onsetvalue={handleSetInputValue}></c-modal-task-form>
 </template>
