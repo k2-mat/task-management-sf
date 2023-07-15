@@ -27,7 +27,7 @@ export default class TaskManagement extends LightningElement {
       .then((result) => {
         this.searchResultTask = result;
       }).catch((error) => {
-        showError('タスクを取得できませんでした。');
+        showError('Get Tasks Error.');
       })
   }
 
@@ -38,7 +38,7 @@ export default class TaskManagement extends LightningElement {
       .then((result) => {
         this.searchResultTask = result;
       }).catch((error) => {
-        showError('タスクを取得できませんでした。');
+        showError('Get Tasks Error.');
       })
   }
 
@@ -60,18 +60,18 @@ export default class TaskManagement extends LightningElement {
       if (evt.detail.value.Id) {
         updateTask({task: evt.detail.value})
           .then((result) => {
-            this.showMessage('タスクを更新しました。');
+            this.showMessage('Successfully updated.');
             this.reloadData();
           }).catch((error) => {
-            this.showError('タスクを更新できませんでした。');
+            this.showError('Update Error.');
           })
       } else {
         createTask({task: evt.detail.value})
           .then((result) => {
-            this.showMessage('タスクを登録しました。');
+            this.showMessage('Successfully added.');
             this.reloadData();
           }).catch((error) => {
-            this.showError('タスクを登録できませんでした。');
+            this.showError('Add Error.');
           })
       }
     }
@@ -102,23 +102,23 @@ export default class TaskManagement extends LightningElement {
       .then((result) => {
         this.searchResultTask = result;
       }).catch((error) => {
-        showError('タスクを取得できませんでした。');
+        showError('Get Tasks Error.');
       });
   }
 
   async handleDeleteTask(evt) {
     const recordid = evt.target.dataset.recordid;
     const result = await LightningConfirm.open({
-      message: '本当に削除しますか？',
+      message: 'Are you sure?',
       variant: 'headerless'
     });
     if (result) {
       deleteTask({recordid: recordid})
         .then((result) => {
-          this.showMessage('タスクを削除しました。');
+          this.showMessage('Successfully deleted.');
           this.reloadData();
         }).catch((error) => {
-          showError('タスクを削除できませんでした。');
+          showError('Delete Error.');
         });
     }
   }
