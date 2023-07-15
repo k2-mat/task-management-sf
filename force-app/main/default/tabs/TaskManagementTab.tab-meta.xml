@@ -2,6 +2,6 @@
 <CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Lightning アプリケーションビルダー による作成</description>
     <flexiPage>TaskManagement</flexiPage>
-    <label>タスク管理</label>
+    <label>Tasks</label>
     <motif>Custom83: Pencil</motif>
 </CustomTab>

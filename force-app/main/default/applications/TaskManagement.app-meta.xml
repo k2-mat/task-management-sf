@@ -9,7 +9,7 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>タスク管理</label>
+    <label>Tasks</label>
     <navType>Standard</navType>
     <tabs>TaskManagementTab</tabs>
     <uiType>Lightning</uiType>

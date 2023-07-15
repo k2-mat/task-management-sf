@@ -2,33 +2,23 @@
   <div class="slds-box slds-theme_shade">
     <lightning-icon icon-name="utility:search" alternative-text="Search" title="Search" size="x-small"></lightning-icon>
     <span class="slds-m-left_x-small">
-      検索条件
+      Search
     </span>
   </div>
   <div class="slds-box slds-theme_default">
     <div class="slds-form" role="list">
       <div class="slds-form__row search-form">
         <div class="slds-form__item" role="listitem">
-          <div class="slds-form-element slds-form-element_stacked">
-            <label class="slds-form-element__label" for="search-title">件名</label>
-            <div class="slds-form-element__control">
-              <input type="text" id="search-title" class="slds-input" onblur={changeSearchTitle} value={searchTitle} />
-            </div>
-          </div>
+          <lightning-input type="text" label="Title" id="search-title" onchange={changeSearchTitle} value={searchTitle}></lightning-input>
         </div>
         <div class="slds-form__item" role="listitem">
-          <div class="slds-form-element slds-form-element_stacked">
-            <label class="slds-form-element__label" for="search-body">内容</label>
-            <div class="slds-form-element__control">
-              <input type="text" id="search-body" class="slds-input" onblur={changeSearchBody} value={searchBody} />
-            </div>
-          </div>
+          <lightning-input type="text" label="Content" id="search-body" onchange={changeSearchBody} value={searchBody}></lightning-input>
         </div>
         <div class="slds-form__item" role="listitem">
           <div class="slds-form-element slds-form-element_stacked slds-align-bottom">
             <label></label>
             <div class="slds-form-element__control">
-              <lightning-button label="リセット" title="リセット" onclick={handleReset} class="slds-m-left_x-small"></lightning-button>
+              <lightning-button label="Reset" title="Reset" onclick={handleReset} class="slds-m-left_x-small"></lightning-button>
             </div>
           </div>
         </div>
@@ -38,13 +28,13 @@
   <div class="slds-box slds-theme_shade slds-m-top_medium">
     <lightning-icon icon-name="utility:table" alternative-text="Table" title="Table" size="x-small"></lightning-icon>
     <span class="slds-m-left_x-small">
-      一覧
+      List
     </span>
   </div>
   <div class="slds-box slds-theme_default">
     <div class="slds-clearfix slds-m-bottom_small">
       <div class="slds-float_right">
-        <lightning-button variant="brand" label="登録" title="登録" onclick={openModalNew} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand" label="Add" title="Add" onclick={openModalNew} class="slds-m-left_x-small"></lightning-button>
       </div>
     </div>
     <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover">
@@ -55,8 +45,8 @@
       </colgroup>
       <thead>
         <tr>
-          <th scope="col">件名</th>
-          <th scope="col">内容</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -70,8 +60,8 @@
               {task.Body__c}
             </td>
             <td>
-              <lightning-button variant="brand-outline" label="編集" title="編集" onclick={openModalNew} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
-              <lightning-button variant="destructive-text" label="削除" title="削除" onclick={handleDeleteTask} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
+              <lightning-button variant="brand-outline" label="Edit" title="Edit" onclick={openModalNew} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
+              <lightning-button variant="destructive-text" label="Delete" title="Delete" onclick={handleDeleteTask} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
             </td>
           </tr>
         </template>

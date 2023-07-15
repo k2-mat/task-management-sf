@@ -25,11 +25,11 @@ export default class ModalTaskForm extends LightningElement {
   }
 
   get headerTitle() {
-    return this.recordid ? '編集' : '登録';
+    return this.recordid ? 'Edit' : 'Add';
   }
 
   get submitTitle() {
-    return this.recordid ? '更新する' : '登録する';
+    return this.recordid ? 'Update' : 'Add';
   }
 
   setData(recordid) {
