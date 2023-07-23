@@ -5,15 +5,18 @@ export default class ModalTaskForm extends LightningElement {
     showModal = false;
     task = {};
     recordid;
+    modalBackgroundPosition;
 
     @api show(recordid) {
         this.showModal = true;
         this.setData(recordid);
+        this.fixModalBackground();
     }
 
     @api hide() {
         this.task = {};
         this.showModal = false;
+        this.releaseModalBackground();
     }
 
     get title() {
@@ -82,5 +85,31 @@ export default class ModalTaskForm extends LightningElement {
             return validSoFar && inputCmp.checkValidity();
         }, true);
         return allValid;
+    }
+
+    fixModalBackground() {
+        const innerContent = this.mainInnerDom();
+        this.modalBackgroundPosition = innerContent.getBoundingClientRect().top;
+        innerContent.style.position = "fixed";
+        innerContent.style.top = this.modalBackgroundPosition + "px";
+        innerContent.style.width = "100%";
+    }
+
+    releaseModalBackground() {
+        const content = this.mainDom();
+        const innerContent = this.mainInnerDom();
+        innerContent.style.position = null;
+        innerContent.style.top = null;
+        innerContent.style.width = null;
+        document.querySelector("html").scrollTop = content.getBoundingClientRect().top + this.modalBackgroundPosition * -1;
+        this.modalBackgroundPosition = undefined;
+    }
+
+    mainDom() {
+        return document.querySelector("div[role='main']");
+    }
+
+    mainInnerDom() {
+        return this.mainDom().querySelector(":scope > div");
     }
 }
