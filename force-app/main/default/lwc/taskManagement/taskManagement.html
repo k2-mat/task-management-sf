@@ -1,72 +1,101 @@
 <template>
-  <div class="slds-box slds-theme_shade">
-    <lightning-icon icon-name="utility:search" alternative-text="Search" title="Search" size="x-small"></lightning-icon>
-    <span class="slds-m-left_x-small">
-      Search
-    </span>
-  </div>
-  <div class="slds-box slds-theme_default">
-    <div class="slds-form" role="list">
-      <div class="slds-form__row search-form">
-        <div class="slds-form__item" role="listitem">
-          <lightning-input type="text" label="Title" id="search-title" onchange={changeSearchTitle} value={searchTitle}></lightning-input>
-        </div>
-        <div class="slds-form__item" role="listitem">
-          <lightning-input type="text" label="Content" id="search-body" onchange={changeSearchBody} value={searchBody}></lightning-input>
-        </div>
-        <div class="slds-form__item" role="listitem">
-          <div class="slds-form-element slds-form-element_stacked slds-align-bottom">
-            <label></label>
-            <div class="slds-form-element__control">
-              <lightning-button label="Reset" title="Reset" onclick={handleReset} class="slds-m-left_x-small"></lightning-button>
+    <div class="slds-box slds-theme_shade">
+        <lightning-icon icon-name="utility:search" alternative-text="Search" title="Search" size="x-small"></lightning-icon>
+        <span class="slds-m-left_x-small"> Search </span>
+    </div>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-form" role="list">
+            <div class="slds-form__row search-form">
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        type="text"
+                        label="Title"
+                        id="search-title"
+                        onchange={changeSearchTitle}
+                        value={searchTitle}
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <lightning-input
+                        type="text"
+                        label="Content"
+                        id="search-body"
+                        onchange={changeSearchBody}
+                        value={searchBody}
+                    ></lightning-input>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-align-bottom">
+                        <label></label>
+                        <div class="slds-form-element__control">
+                            <lightning-button
+                                label="Reset"
+                                title="Reset"
+                                onclick={handleReset}
+                                class="slds-m-left_x-small"
+                            ></lightning-button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="slds-box slds-theme_shade slds-m-top_medium">
-    <lightning-icon icon-name="utility:table" alternative-text="Table" title="Table" size="x-small"></lightning-icon>
-    <span class="slds-m-left_x-small">
-      List
-    </span>
-  </div>
-  <div class="slds-box slds-theme_default">
-    <div class="slds-clearfix slds-m-bottom_small">
-      <div class="slds-float_right">
-        <lightning-button variant="brand" label="Add" title="Add" onclick={openModalNew} class="slds-m-left_x-small"></lightning-button>
-      </div>
+    <div class="slds-box slds-theme_shade slds-m-top_medium">
+        <lightning-icon icon-name="utility:table" alternative-text="Table" title="Table" size="x-small"></lightning-icon>
+        <span class="slds-m-left_x-small"> List </span>
     </div>
-    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover">
-      <colgroup>
-        <col span="1">
-        <col span="1">
-        <col span="1" style="width: 160px;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Content</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <template for:each={searchResultTask} for:item="task">
-          <tr key={task.Id} data-recordid={task.Id}>
-            <td>
-                {task.Title__c}
-            </td>
-            <td>
-              {task.Body__c}
-            </td>
-            <td>
-              <lightning-button variant="brand-outline" label="Edit" title="Edit" onclick={openModalNew} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
-              <lightning-button variant="destructive-text" label="Delete" title="Delete" onclick={handleDeleteTask} class="slds-m-left_x-small" data-recordid={task.Id}></lightning-button>
-            </td>
-          </tr>
-        </template>
-      </tbody>
-    </table>
-  </div>
-  <c-modal-task-form onsetvalue={handleSetInputValue}></c-modal-task-form>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-clearfix slds-m-bottom_small">
+            <div class="slds-float_right">
+                <lightning-button
+                    variant="brand"
+                    label="Add"
+                    title="Add"
+                    onclick={openModalNew}
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover">
+            <colgroup>
+                <col span="1" />
+                <col span="1" />
+                <col span="1" style="width: 160px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={searchResultTask} for:item="task">
+                    <tr key={task.Id} data-recordid={task.Id}>
+                        <td>{task.Title__c}</td>
+                        <td>{task.Body__c}</td>
+                        <td>
+                            <lightning-button
+                                variant="brand-outline"
+                                label="Edit"
+                                title="Edit"
+                                onclick={openModalNew}
+                                class="slds-m-left_x-small"
+                                data-recordid={task.Id}
+                            ></lightning-button>
+                            <lightning-button
+                                variant="destructive-text"
+                                label="Delete"
+                                title="Delete"
+                                onclick={handleDeleteTask}
+                                class="slds-m-left_x-small"
+                                data-recordid={task.Id}
+                            ></lightning-button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <c-modal-task-form onsetvalue={handleSetInputValue}></c-modal-task-form>
 </template>
