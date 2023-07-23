@@ -1,18 +1,43 @@
-# Salesforce DX Project: Next Steps
+# Task Management App
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+-   Lightning Web Component (LWC)
+-   Apex
+-   Salesforce DX
 
-## How Do You Plan to Deploy Your Changes?
+## Setup
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Clone this repository.
 
-## Configure Your Salesforce DX Project
+```
+git@github.com:k2-mat/task-management-sf.git
+```
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+or
 
-## Read All About It
+```
+https://github.com/k2-mat/task-management-sf.git
+```
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Open the directory.
+
+```
+cd task-management-sf
+```
+
+Authorize to your Developer Hub (Dev Hub) org.
+
+```
+sfdx org:web:login -d -a "Hub Org"
+```
+
+Create a scratch org, push sources, and set a permission set.
+
+```
+npm run setup -org="Scratch Org"
+```
+
+Open the scratch org.
+
+```
+sfdx org:open -o "Scratch Org"
+```
