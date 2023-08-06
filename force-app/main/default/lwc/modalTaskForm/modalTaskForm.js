@@ -6,11 +6,13 @@ export default class ModalTaskForm extends LightningElement {
     task = {};
     recordid;
     modalBackgroundPosition;
+    focusInputName;
 
     @api show(recordid) {
         this.showModal = true;
         this.setData(recordid);
         this.fixModalBackground();
+        this.setDefaultFocus();
     }
 
     @api hide() {
@@ -33,6 +35,24 @@ export default class ModalTaskForm extends LightningElement {
 
     get submitTitle() {
         return this.recordid ? "Update" : "Add";
+    }
+
+    renderedCallback() {
+        this.executeFocus();
+    }
+
+    setDefaultFocus() {
+        this.focusInputName = "Title__c";
+    }
+
+    executeFocus() {
+        if (this.focusInputName) {
+            const el = this.template.querySelector('.input[data-name="' + this.focusInputName + '"]');
+            if (el) {
+                el.focus();
+            }
+            this.focusInputName = undefined;
+        }
     }
 
     setData(recordid) {
